@@ -1,0 +1,58 @@
+{
+  "name": "sbpa_demo",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@cap-js/hana": "^1",
+    "@sap-cloud-sdk/connectivity": "^3.23.0",
+    "@sap-cloud-sdk/http-client": "^3.23.0",
+    "@sap-cloud-sdk/resilience": "^3.23.0",
+    "@sap/cds": "^8",
+    "@sap/xssec": "^4",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/cds-types": "^0.7.0",
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^8"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "[development]": {
+          "kind": "sqlite"
+        },
+        "[production]": {
+          "kind": "hana"
+        }
+      },
+      "auth": "mocked",
+      "processautomation": {
+        "kind": "rest",
+        "credentials": {
+          "destination": "sbpa_pract_1",
+          "forwardAuthToken": true
+        }
+      },
+      "[hybrid]": {
+    
+      "processautomation": {
+        "kind": "rest",
+        "credentials": {
+          "destination": "sbpa_pract_1",
+          "forwardAuthToken": true
+        }
+      }
+    },
+    "sql": {
+      "native_hana_associations": false
+    }
+  }
+}
+}
